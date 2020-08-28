@@ -16,18 +16,30 @@ opts_chunk$set(out.width='40%', echo=FALSE, fig.align='center')
 #' This lab introduces you to navigating histories on GitHub, `git checkout`, and `git branch`, as well as the git side of the workflow we'll use for labs.  
 #' 
 #' *Summary*: 
-#' 1. Use `git checkout` to go back to a previous commit. 
-#' 2. 
-#' 
+#' 1. Use `git checkout [hash]` to go back to a previous commit. 
+#' 2. Use `git checkout [branch]` to move to the latest commit for a branch. 
+#' 3. The git side of the lab workflow goes like this: 
+#'   a. Fork and clone the lab repo from <https://github.com/data-science-methods>. 
+#'   b. Follow the instructions in `lab.R`
+#'   c. When you're finished, push the results back up to GitHub and file a pull request against the original repo. 
+#'   
+
+
 #' # Problem 1 #
 #' Navigate to the GitHub repo for this lab assignment, <https://github.com/data-science-methods/lab-w2-git>.  Fork the lab, then clone it to your working machine.  Open the file `lab.R` in a *new* R session.  
 #' 
+
+
 #' # Problem 2 #
 #' Edit `lab.R`.  You don't need to do anything in particular, but they should be trackable changes by it.  Add and commit the changes to your working machine.  
 #' 
+
+
 #' # Problem 3 #
 #' Edit `lab.R` again.  Add and commit the changes to your working machine, *and then* push them to your GitHub fork.  
 #' 
+
+
 #' # Problem 4 #
 #' 1. Open your fork of the lab repo on GitHub.  The URL will be something like <https://github.com/username/lab-w2-git>.  
 #' 2. Find and click on the history button, above the file list and to the right. (I wasn't able to find a keyboard shortcut for this. :-( )
@@ -41,6 +53,9 @@ include_graphics(file.path('img', 'history.png'))
 #+ fig.cap="The hash for a commit is the series of 7 letters on the right side of the entry in the history view."
 include_graphics(file.path('img', 'hash.png'))
 
+#'
+
+
 #' # Problem 5 #
 #' 1. Back on your working machine, enter the following into the command line, pasting your hash in place of the example. 
 #' 
@@ -49,6 +64,17 @@ include_graphics(file.path('img', 'hash.png'))
 #' ```
 #' 
 #' 2. Look at `lab.R`. Your edits from Problem 3 are gone! 
-#' 3. To reverse this, either find the hash from 
+#' 3. Check `git status`. Note that it says `HEAD detached at [hash]` in red.  This means that making commits right now will cause serious problems. 
+#' 4. To make commits (including permanently undoing a commit), we need to learn about *branches*.  That's next! For now, entering the following: 
+#'
+#' ```
+#' $ git checkout master
+#' ```
+#' 
+
+
+#' # Problem 6 #
+#' A *branch* is a sequence of commits, running from past to future.  Git allows you to have multiple branches, working in parallel, that can then be recombined.  The idea is that, in a complex project, different programmers will be working on different components of the project, which can then be combined into the primary branch of the project (usually called "master" or "main") for release.  
+
 
 
