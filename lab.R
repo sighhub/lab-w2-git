@@ -64,54 +64,22 @@ include_graphics(file.path('img', 'hash.png'))
 #' ```
 #' 
 #' 2. Look at `lab.R`. Your edits from Problem 3 are gone! 
-#' 3. Check `git status`. Note that it says `HEAD detached at [hash]` in red.  This means that making commits right now will cause serious problems. 
-#' 4. To make commits (including permanently undoing a commit), we need to learn about *branches*.  That's next! For now, entering the following: 
-#'
+#' 3. Check `git status`. Note that it says `HEAD detached at [hash]` in red.  This means that making commits right now will cause serious problems.  (To confirm: git won't let us make commits with a detached HEAD.)
+#' 4. To get out of this "detached HEAD" state, do the following:  
 #' ```
 #' $ git checkout main
 #' ```
+#' 5. Confirm that your edits from Problem 3 have been restored and that `git status` isn't warning at you about a detached HEAD. 
 #' 
-
 
 #' # Problem 6 #
-#' A *branch* is a sequence of commits, running from past to future.  Git allows you to have multiple branches, working in parallel, that can then be recombined.  The idea is that, in a complex project, different programmers will be working on different components of the project, which can then be combined into the primary branch of the project (usually called "main" or "master") for release.  
+#' Suppose that the changes from Problem 3 caused things to break, and we want to permanently go back to the previous state of things.  We do that using `git revert`.  
+#' 1. In the GitHub history, find the hash for the commit that *caused* the breaking changes.  
+#'   - This is the commit from Problem 3, not the previous commit.  
+#'   - Note that this is different from the commit we used in Problem 5. 
+#' 2. Do the following: 
+#' ```
+#' $ git revert [erroneous commit ID]`
+#' ```
+#' 3. Confirm that the changes from Problem 3 have been undone.  Push to GitHub, and examine the history view.  
 #' 
-
-#+ fig.cap='Diagram of branches and merging in git.  Source: <https://english.stackexchange.com/questions/474419/does-the-term-master-in-git-the-vc-system-refer-to-slavery>, which has a worthwhile discussion of the valence of the term "master" in git.'
-include_graphics(file.path('img', 'branch.png'))
-
-#' 1. To create a *new* branch called `bobcat`, you simply use `checkout` with `-b` and the branch name: 
-#' ```
-#' $ git checkout -b bobcat
-#' ```
-#' 
-#' 2. Use `git status` to confirm that you're on the `bobcat` branch.  
-#' 3. Make some changes and commit them.  
-#' 4. Once a branch exists, you still use `checkout` but without the `-b`: 
-#' 
-#' ```
-#' $ git checkout main
-#' ```
-#' 
-#' Confirm that the changes from step 3 have been reversed. Note that we did this up above to get back from the "detached HEAD" state.  
-#' 5. Checkout `bobcat` again and confirm that your changes are back.  
-#' 
-
-
-#' # Problem 7 #
-#' To combine branches we use the command `merge`.  
-#' 1. Ensure that you're on the `main` branch.  Then enter the following: 
-#' ```
-#' git merge bobcat
-#' ```
-#' 2. *If there aren't any conflicts*, you'll be prompted to edit the default commit message and everything will work smoothly. 
-#' 3. *If there are conflicts*, things are more complicated.  Git will tell you what files have conflicts, and `git status` will indicate that you're in the middle of a merge. 
-#'   a. The conflicting content from each fill be shown together, surrounded by `<<<<<<<` and `>>>>>>>`.  
-#'   b. Open the file(s), search for `<<<<<<<`.  Edit to resolve the conflict.  Remove the conflict indicators added by git.  
-#'   c. To finish the merge, add the fixed files and use `git commit` again. 
-#'   d. For more, see here: <https://githowto.com/resolving_conflicts>
-#'   
-
-
-
-
