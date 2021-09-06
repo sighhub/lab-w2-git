@@ -33,7 +33,7 @@ opts_chunk$set(out.width='40%', echo=FALSE, fig.align='center')
 #' # Problem 2 #
 #' Edit `lab.R`.  You don't need to do anything in particular, but they should be trackable changes by it.  Add and commit the changes to your working machine.  
 #' 
-
+is this dif 
 
 #' # Problem 3 #
 #' Edit `lab.R` again.  Add and commit the changes to your working machine, *and then* push them to your GitHub fork.  
